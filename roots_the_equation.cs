@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 
 namespace HW_21._02._2020
 {
     class Program
     {
-        // находитвсе целочисленные корни уравнение n-ой степени Xn-1X^n+An-2X^n-1+An-3
+        // находитвсе целочисленные корни уравнение n-ой степени Xn-1X^n+An-2X^n-1+An-3;
        
         static void Proverka1(int[] kf,int n )
         {
@@ -37,31 +37,32 @@ namespace HW_21._02._2020
         {
             int j = 0;
             int count = 0;
-            int lastkf = kf[kf.Length];     // записали свобоный член уравнения
-            for (int i = 1; i <= lastkf; i++) // подсчет числа делитлей
+            int lastkf = kf[kf.Length-1];     // записали свобоный член уравнения;
+            for (int i = 1; i <= lastkf; i++) // подсчет числа делитлей;
             {
                 if (lastkf % i == 0)
                 {
                     count++;
                 }
             }
-            int[] deliteli = new int[count];  //массив для записи всех делителей свобоного члена
-            for (int i = 1; i <= lastkf; i++) // запись всех делителей
+            count = (count * 2) + 1;    //увеличилив в 2 раза +1 что бы записать - коэфы и 0;
+            int[] deliteli = new int[count];  //массив для записи всех делителей свобоного члена;
+            for (int i = -lastkf; i <= lastkf; i++) // запись всех делителей проходом от -lastkf до lastkf;
             {
-                if (lastkf % i == 0)
+                if (lastkf % i == 0) // как пофиксить ?
                 {
                     deliteli[j] = i;
                     j++; 
                 }
             }
-            return deliteli;2
+            return deliteli;
         }
         static int[] ProverkaDelliteley(int[] deliteli,int[] kf)
         {
             int[] result = new int[deliteli.Length];
-            int[] korni = new int[deliteli.Length]; // для записи корней которые подошли
-            int n = kf.Length;     //кол-во степенией 
-            for (int i = 0; i < deliteli.Length; i++)
+            int[] korni = new int[deliteli.Length]; // для записи корней которые подошли;
+            int n = kf.Length;     //кол-во степенией ;
+            for (int i = 0; i < deliteli.Length; i++) 
             {
                 for (int j = 0; j < kf.Length; j++)
                 {
@@ -73,6 +74,7 @@ namespace HW_21._02._2020
                 if (result[i] == 0)
                 {
                     korni[i] = result[i];
+                    Console.Write("Корень {0}= {1} ",i,korni[i]);
                 }
             }
             return korni;
@@ -87,7 +89,7 @@ namespace HW_21._02._2020
                 Console.Write("введите {0} коэфициент: ", i + 1);
                 kf[i] = int.Parse(Console.ReadLine());
             }
-            Proverka1(kf, n); // проверка на 0 и 1
+            //Proverka1(kf, n); // проверка на 0 и 1
             int[] deliteli=SearchDelliteley(kf);    // поиск делитлей 
             ProverkaDelliteley(deliteli, kf);       // подбор корней по делителям
 
