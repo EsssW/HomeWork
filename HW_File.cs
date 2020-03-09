@@ -7,43 +7,7 @@ namespace Работа__с_Файлами
     class Program
     {
         static void Main()
-        {   /*
-            StreamReader sr = new StreamReader("C:\\.......\\1.txt");
-            sr.ReadLine();  // считывает 1 строку // return null если ошибка чтения 
-            sr.Read();      // считывает по 1 символу // возращает код символа или -1 если ошибка
-            sr.ReadToEnd(); // считывает весь файл сразу
-            sr.Close();     // зыкрывает и удаляет из озу 
-            //=============================================//
-            StreamWriter sw = new StreamWriter("");
-            //sw.Write();     
-            sw.WriteLine();
-            sw.Close();
-            */
-            //=========================================//
-            /*
-            StreamReader sr1 = new StreamReader("C:\\Users\\mukht\\Desktop\\1.txt",System.Text.Encoding.Default);
-            string s;
-            int count = 0;
-            string[] s1;
-            int k = 0;
-            StreamWriter sr2 = new StreamWriter("C:\\Users\\mukht\\Desktop\\1_1.txt");
-            while ((s = sr1.ReadLine()) != null)
-            {
-
-                s1 = s.Split();
-                foreach(string x in s1)
-                {
-                    if (x != "") k++;
-                }
-                if (s == "") count++;
-                sr2.WriteLine(s);
-            }
-            Console.WriteLine("Пустых строк = {0}",count);
-            Console.WriteLine("Число слов= {0}",k);
-            sr2.Close();
-            */
-            /*
-            //=========================================//
+        {   
             // 1)Длинна самой длинной строки
             StreamReader file = new StreamReader("C:\\Users\\mukht\\Desktop\\1.txt");
 
@@ -57,10 +21,8 @@ namespace Работа__с_Файлами
             }
 
             Console.WriteLine("Самаядлинна строка= {0}", maxSTR.Length);
-            file.Close();\
-            */
-            /*
-            //=========================================//
+            file.Close();
+            //===========================================================================================================================//
             //2) Cколько раз данное слово встречаеться в файле
             StreamReader file = new StreamReader("C:\\Users\\mukht\\Desktop\\1.txt");
             Console.WriteLine("Введите слово для поиска");
@@ -80,8 +42,7 @@ namespace Работа__с_Файлами
             }
             Console.WriteLine("Слово {0} всречаелось в файле {1} раз", slovo, count);
             file.Close();
-            */
-            //=========================================//
+            //===========================================================================================================================//
             //3)Дан файл, описывающий матрицу, написать функцию его транспонирования,
             // результат записать в новый файл
             StreamReader file = new StreamReader("C:\\Users\\mukht\\Desktop\\matrix.txt");
