@@ -45,41 +45,44 @@ namespace Работа__с_Файлами
             //===========================================================================================================================//
             //3)Дан файл, описывающий матрицу, написать функцию его транспонирования,
             // результат записать в новый файл
-            StreamReader file = new StreamReader("C:\\Users\\mukht\\Desktop\\matrix.txt");
-            // Прочитали все строки из файла
-            string[] s = File.ReadAllLines("C:\\Users\\mukht\\Desktop\\matrix.txt");
-
-            int[][] array = new int[s.Length][];
-            for (int i = 0; i < array.Length; i++)
+            StreamReader f = new StreamReader("C:\\Users\\mukht\\Desktop\\matrix.txt");//чтение файла (массив в который будем вносить)
+            string s;
+            int[,] arr;
+            string[] strarr;// массив для зписи строки 
+            int i = 0;
+            while ((s = f.ReadLine()) != null)
             {
-                //Разбили строку пробелами            
-                string[] str = s[i].Trim().Split(' ');
-                //Создали массив 
-                array[i] = new int[str.Length];
-                for (int j = 0; j < str.Length; j++)
-                    //Оборезали пробельные символы и преобразовали в целое число
-                    array[i][j] = int.Parse(str[j].Trim());
-            }
-            //Вывод массива на экран
-            for (int i = 0; i < array.Length; i++)
-            {
-                for (int j = 0; j < array[i].Length; j++)
-                    Console.Write(array[i][j] + " ");
+                strarr = s.Split(' '); // заполнили строкой разделив пробелом
+                arr = new int[strarr.Length, strarr.Length];
+                for (int j = 0; j < 4; j++)
+                {
+                    var t = int.Parse(strarr[j]);
+                    arr[i, j] = t;
+                    Console.Write(" {0}", arr[i, j]);
+                }
+                i++;
                 Console.WriteLine();
             }
-            // траспонирование 
-            for (int i = 0; i < 4; i++)
+            for (int k = 0; k < arr.Length; k++)
             {
-                for (int j = 1; j < 4; j++)
+                for (int j = 0; j < k; j++)
                 {
-                    int num = array[i][j];
-                    array[i][j] = array[j][i];
-                    array[j][i] = num;
+                    int change = arr[k, j];
+                    arr[k, j] = arr[j, k];
+                    arr[j, k] = change;
                 }
             }
-
-            Console.ReadKey(true);
-
+            StreamReader nmatrix = new StreamReader("C:\\Users\\mukht\\Desktop\\matrix2.txt");
+            for (int j = 0; j< arr.Length; j++)
+            {
+                for (int l = 0; l < arr.Length; l++)
+                {
+                    nmatrix.WritLine(a[j][l]);
+                }
+                
+            }
+            f.Close();
+            nmatrix.Close();
         }
     }
 }
